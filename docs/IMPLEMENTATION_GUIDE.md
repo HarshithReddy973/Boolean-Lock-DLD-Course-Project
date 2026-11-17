@@ -67,10 +67,3 @@ The testbench uses short timer values and is not part of the bitstream.
 | Invalid selection | No switch, or two switches, then ENTER | LED4 for 250 ms |
 | Lockout | Three wrong digits | LED3 for 5 s, then LED0 |
 | Re-lock | Press BTN0 after unlocking | Back to LED0 |
-
-## 9. GitHub checklist
-- [ ] `rtl/`, `sim/`, `constraints/` unchanged from the files that were simulated and implemented
-- [ ] `docs/images/waveform.png` and `docs/images/board_demo.jpg` added
-- [ ] `bitstream/boolean_lock_top.bit` added (delete `bitstream/README.txt`)
-- [ ] `docs/Project_Report.docx` completed (names, Vivado numbers, figures)
-- [ ] `README.md` image links resolve
