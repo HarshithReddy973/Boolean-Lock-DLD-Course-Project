@@ -80,5 +80,53 @@ Full details: [`docs/IMPLEMENTATION_GUIDE.md`](docs/IMPLEMENTATION_GUIDE.md). Th
 
 These are acceptable for a classroom demonstration; the report lists suggested improvements.
 
+
+
+## Architecture:
+                    PHYSICAL INPUTS
+                    ┌──────────────────────────┐
+                    │                          │
+                    Slide Switches              ENTER Button
+                    (SW[9:0])                    (BTN1)
+                    │                          │
+                    ▼                          ▼
+                    ┌──────────────┐        ┌──────────────────┐
+                    │ Digit Decoder│        │ Button Conditioner│
+                    │              │        │                  │
+                    │ One-hot to   │        │ Synchronization  │
+                    │ Binary Digit │        │ + Debouncing     │
+                    │              │        │ + Pulse Generation│
+                    └──────┬───────┘        └────────┬─────────┘
+                    │                         │
+                    │ digit, valid            │ enter_pulse
+                    │                         │
+                    └────────────┬────────────┘
+                          ▼
+                    ┌─────────────────────┐
+                    │ Combination Lock   │
+                    │ Core (FSM)         │
+                    │                     │
+                    │ • Password Checking │
+                    │ • Position Tracking │
+                    │ • Attempt Counter   │
+                    │ • Error Timer       │
+                    │ • Lockout Timer     │
+                    └──────────┬──────────┘
+                           │
+                    Status & Display Data
+                           │
+                    ┌─────────┴──────────┐
+                    ▼                    ▼
+                    ┌──────────────┐    ┌─────────────────┐
+                    │ LED Control  │    │ Seven-Segment   │
+                    │              │    │ Display Driver  │
+                    └──────┬───────┘    └────────┬────────┘
+                    │                     │
+                    ▼                     ▼
+                    FPGA LEDs            7-Segment Display
 ## Notes
 The testbench is simulation-only and is not part of the bitstream. It uses `$fatal`; if your Vivado version rejects that in a `.v` file, set the file type to SystemVerilog.
+
+
+
+
