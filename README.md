@@ -20,7 +20,7 @@ Select each digit using one-hot slide switches (exactly one of SW0–SW9 ON) and
 ## Demo
 | Simulation waveform | Running on the Boolean board |
 |---|---|
-| ![Simulation waveform](docs/images/waveform.png) | ![Board demo](docs/images/board_demo.jpg) |
+| ![Simulation waveform](docs/images/tb_waveform.png) | ![Board demo](docs/images/board_demo.jpeg) |
 
 ## Repository structure
 ```text
