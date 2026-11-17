@@ -1,0 +1,17 @@
+# Vivado generated files (keep sources, constraints and the final .bit in bitstream/)
+*.cache/
+*.hw/
+*.runs/
+*.sim/
+*.ip_user_files/
+*.gen/
+*.xpr
+*.jou
+*.log
+*.str
+*.vcd
+*.wdb
+.Xil/
+xsim.dir/
+webtalk*
+.DS_Store
