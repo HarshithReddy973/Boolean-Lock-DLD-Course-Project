@@ -17,10 +17,16 @@ Select each digit using one-hot slide switches (exactly one of SW0–SW9 ON) and
 - Synchronized and debounced ENTER button
 - Status LEDs and two multiplexed four-digit seven-segment displays
 
+
+
 ## Demo
+
+[![Watch FPGA Board Demonstration](docs/images/board_demo.jpeg)](https://drive.google.com/file/d/YOUR_FILE_ID/view)
+
+Click the image above to watch the complete FPGA demonstration.
+
 | Simulation waveform | Running on the Boolean board |
 |---|---|
-| ![Demo Video](https://drive.google.com/file/d/1T029uOaGXaCYNrxRpSRk_WwDEx3idXGq/view?usp=drive_link)
 | ![Simulation waveform](docs/images/tb_waveform.png) | ![Board demo](docs/images/board_demo.jpeg) |
 
 
