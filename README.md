@@ -21,7 +21,7 @@ Select each digit using one-hot slide switches (exactly one of SW0–SW9 ON) and
 
 ## Demo
 
-[![Watch FPGA Board Demonstration](docs/images/board_demo.jpeg)](https://drive.google.com/file/d/YOUR_FILE_ID/view)
+[▶ Watch the FPGA Board Demonstration](https://drive.google.com/file/d/1T029uOaGXaCYNrxRpSRk_WwDEx3idXGq/view)
 
 Click the image above to watch the complete FPGA demonstration.
 
