@@ -20,7 +20,54 @@ Select each digit using one-hot slide switches (exactly one of SW0–SW9 ON) and
 ## Demo
 | Simulation waveform | Running on the Boolean board |
 |---|---|
+| ![Demo Video](https://drive.google.com/file/d/1T029uOaGXaCYNrxRpSRk_WwDEx3idXGq/view?usp=drive_link)
 | ![Simulation waveform](docs/images/tb_waveform.png) | ![Board demo](docs/images/board_demo.jpeg) |
+
+
+
+## Architecture:
+                    PHYSICAL INPUTS
+                    ┌──────────────────────────┐
+                    │                          │
+                    Slide Switches              ENTER Button
+                    (SW[9:0])                    (BTN1)
+                    │                          │
+                    ▼                          ▼
+                    ┌──────────────┐        ┌──────────────────┐
+                    │ Digit Decoder│        │ Button Conditioner│
+                    │              │        │                  │
+                    │ One-hot to   │        │ Synchronization  │
+                    │ Binary Digit │        │ + Debouncing     │
+                    │              │        │ + Pulse Generation│
+                    └──────┬───────┘        └────────┬─────────┘
+                    │                         │
+                    │ digit, valid            │ enter_pulse
+                    │                         │
+                    └────────────┬────────────┘
+                          ▼
+                    ┌─────────────────────┐
+                    │ Combination Lock   │
+                    │ Core (FSM)         │
+                    │                     │
+                    │ • Password Checking │
+                    │ • Position Tracking │
+                    │ • Attempt Counter   │
+                    │ • Error Timer       │
+                    │ • Lockout Timer     │
+                    └──────────┬──────────┘
+                           │
+                    Status & Display Data
+                           │
+                    ┌─────────┴──────────┐
+                    ▼                    ▼
+                    ┌──────────────┐    ┌─────────────────┐
+                    │ LED Control  │    │ Seven-Segment   │
+                    │              │    │ Display Driver  │
+                    └──────┬───────┘    └────────┬────────┘
+                    │                     │
+                    ▼                     ▼
+                    FPGA LEDs            7-Segment Display
+
 
 ## Repository structure
 ```text
@@ -82,51 +129,5 @@ These are acceptable for a classroom demonstration; the report lists suggested i
 
 
 
-## Architecture:
-                    PHYSICAL INPUTS
-                    ┌──────────────────────────┐
-                    │                          │
-                    Slide Switches              ENTER Button
-                    (SW[9:0])                    (BTN1)
-                    │                          │
-                    ▼                          ▼
-                    ┌──────────────┐        ┌──────────────────┐
-                    │ Digit Decoder│        │ Button Conditioner│
-                    │              │        │                  │
-                    │ One-hot to   │        │ Synchronization  │
-                    │ Binary Digit │        │ + Debouncing     │
-                    │              │        │ + Pulse Generation│
-                    └──────┬───────┘        └────────┬─────────┘
-                    │                         │
-                    │ digit, valid            │ enter_pulse
-                    │                         │
-                    └────────────┬────────────┘
-                          ▼
-                    ┌─────────────────────┐
-                    │ Combination Lock   │
-                    │ Core (FSM)         │
-                    │                     │
-                    │ • Password Checking │
-                    │ • Position Tracking │
-                    │ • Attempt Counter   │
-                    │ • Error Timer       │
-                    │ • Lockout Timer     │
-                    └──────────┬──────────┘
-                           │
-                    Status & Display Data
-                           │
-                    ┌─────────┴──────────┐
-                    ▼                    ▼
-                    ┌──────────────┐    ┌─────────────────┐
-                    │ LED Control  │    │ Seven-Segment   │
-                    │              │    │ Display Driver  │
-                    └──────┬───────┘    └────────┬────────┘
-                    │                     │
-                    ▼                     ▼
-                    FPGA LEDs            7-Segment Display
 ## Notes
 The testbench is simulation-only and is not part of the bitstream. It uses `$fatal`; if your Vivado version rejects that in a `.v` file, set the file type to SystemVerilog.
-
-
-
-
